@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>管理ページ</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+</head>
+<body>
+<h1>管理ページ</h1>
+<a th:href="@{/}">メニューへ戻る</a>
+<br/>
+<form action="#" th:action="@{/logout}" method="POST">
+  <input type="submit" value="ログアウト"/>
+</form>
+</body>
+</html>

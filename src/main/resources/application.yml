@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: {生成したクライアントID}
+            clientSecret: {生成したクライアントシークレット}
+            scope:
+              - openid
+              - profile
+              - email

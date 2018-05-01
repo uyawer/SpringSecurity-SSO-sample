@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>ログイン</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+</head>
+<body style="background-color: cornsilk;">
+<h1>ログイン</h1>
+<!-- ログインできなかった時のエラーメッセージ -->
+<p th:if="${loginError}" style="color: #F00;">ログインに失敗しました。</p>
+<form name="loginForm" th:action="@{/login}" method="post">
+  <label th:for="username">ユーザー名：</label>
+  <input name="inputUserName" type="text" title="ユーザー名"/>
+  <br/>
+  <label th:for="password">パスワード：</label>
+  <input name="inputPassWord" type="password" title="パスワード"/>
+  <br/>
+  <input type="submit"/>
+</form>
+<div>
+  <p>admin：管理者ユーザー</p>
+  <p>user：一般ユーザー</p>
+</div>
+<h3>Login with OAuth 2.0</h3>
+<!-- OAuth 2.0 Login用のリンクを表示するエリア -->
+<table>
+  <tr th:each="clientRegistration : ${@clientRegistrationRepository}">
+    <td>
+      <a th:href="@{/oauth2/authorization/{id}(id=${clientRegistration.registrationId})}"
+         th:text="|Sign in with ${clientRegistration.clientName}|">Sign in with App</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
